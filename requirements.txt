@@ -1,12 +1,13 @@
 pandas
 numpy
 seaborn
-#matplotlib
-#cikit-learn
-#catboost
-#xgboost
+matplotlib
+scikit-learn
+catboost
+xgboost
 #Flask
 
--e .
+#-e . # -> this is written only once at starting when we are creating our package for the first time, for the rest of the time it is commented 
+
 
 # whenever i am going to install the requirement.txt packages , at that point of time the setup.py file should also run to build the packages (-e -> will automatically activates setup.py file
