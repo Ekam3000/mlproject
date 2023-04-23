@@ -32,6 +32,14 @@ name='mlproject',
 version='0.0.1',
 author='Ekam bhele',
 author_email='ekambhelle030@gmail.com',
-packages=find_packages(), # whenever find_packages runs , it will  go and see how many folders having file __init__.py and it consider that folders as package itself . and then it will try to build this so once it builds right you can probably import this 
+packages=find_packages(), # whenever find_packages runs , it will  go and see
+# how many folders having file __init__.py and it consider that folders as 
+# package itself . and then it will try to build this so once it builds 
+# right you can probably import this 
+
+#Package Initialization: When a Python package is imported, the
+#  interpreter looks for the __init__.py file in the package 
+# directory and executes it. This file can be used to perform any 
+# initialization that is necessary for the package to work correctly.
 install_requires=get_requirements('requirements.txt')
 )

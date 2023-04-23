@@ -12,8 +12,6 @@ logging.basicConfig(
     filename=LOG_FILE_PATH, # will create log files under logs folder acc to LOG_FILE mentioned path
     format="[ %(asctime)s ] %(lineno)d %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO,
-
-
 )
 
 if __name__ == "__main__":
