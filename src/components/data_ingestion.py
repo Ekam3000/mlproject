@@ -12,8 +12,8 @@ from dataclasses import dataclass
 #used to create class variables 
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
-#from src.components.model_trainer import ModelTrainerConfig
-#from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 
 @dataclass #provides a way to define classes that are primarily used to store data.
@@ -84,15 +84,13 @@ if __name__=="__main__": # initiating and running the file
     #obj.initiate_data_ingestion()
     train_data,test_data = obj.initiate_data_ingestion()
     data_transformation=DataTransformation()
-    data_transformation.initiate_data_transformation(train_data,test_data) #train , test data is passed to initiate_data_transformation function of DataTransformation class 
-    
-    #modeltrainer=ModelTrainer()
-    #print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data,test_data) #train , test data is passed to initiate_data_transformation function of DataTransformation class .   #will note take preprocessor.pkl file , as its already created 
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr)) # will print the r2_score 
 
 
 
 # after running this file artifacts folder will be created and log file will be created 
-
 
 
 # running this file python src/components/data_ingestion.py

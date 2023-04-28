@@ -102,7 +102,10 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.artifacts
+
+# for the folders we will use / in front of name like  .artifacts/ 
+#.artifacts/ 
+
 .env
 .venv
 env/

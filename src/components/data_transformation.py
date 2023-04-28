@@ -1,6 +1,5 @@
 import sys
 from dataclasses import dataclass
-
 import numpy as np 
 import pandas as pd
 from sklearn.compose import ColumnTransformer
@@ -23,6 +22,7 @@ class DataTransformationConfig:
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config=DataTransformationConfig()
+        # this self object will be passed to every function of this class
     def get_data_transformer_object(self): # to work upon the pickle files , this fn is created 
         '''
         This function is responsible for data transformation
@@ -43,7 +43,6 @@ class DataTransformation:
                 ]
             )# this pipeline will run on training dataset
             cat_pipeline=Pipeline(
-
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
                 ("one_hot_encoder",OneHotEncoder()),
@@ -77,8 +76,6 @@ class DataTransformation:
 
             target_column_name="math_score" #math_score is our target column
 
-            
-
             input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1) #obtaining training table columns and rows
 
             target_feature_train_df=train_df[target_column_name]
@@ -93,21 +90,19 @@ class DataTransformation:
 
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
 
-            train_arr = np.c_[
-                input_feature_train_arr, np.array(target_feature_train_df)
-            ] 
+            train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)] 
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
             logging.info(f"Saved preprocessing object.")
             save_object(
                 #used for saving the pickle file in drive with help of utils -> save_object function
                 file_path=self.data_transformation_config.preprocessor_obj_file_path,
                 # this line tells uss i am obtaining path of artifacts/preprocessing.pkl
-                obj=preprocessing_obj
+                obj=preprocessing_obj #the material which i want to save in preprocessor.pkl
             ) 
             return (
-                train_arr,
-                test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
+                train_arr, # will contain X_train, Y_train
+                test_arr, # will contain X_test, Y_test
+                self.data_transformation_config.preprocessor_obj_file_path, # will return preprocessor.pkl file 
             )
         except Exception as e:
             raise CustomException(e,sys)
