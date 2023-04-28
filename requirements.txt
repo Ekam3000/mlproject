@@ -6,8 +6,8 @@ scikit-learn
 catboost
 xgboost
 dill
+Flask
 pickle
-#Flask
 
 #-e . # -> this is written only once at starting when we are creating our package for the first time, for the rest of the time it is commented 
 

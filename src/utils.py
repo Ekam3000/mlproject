@@ -35,9 +35,11 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
         report = {}
 
         for i in range(len(list(models))):
+            #listing down alll the parameters and models 
             model = list(models.values())[i]
             para=param[list(models.keys())[i]]
 
+            #applying grid_search cv to it 
             gs = GridSearchCV(model,para,cv=3)
             gs.fit(X_train,y_train)
 
